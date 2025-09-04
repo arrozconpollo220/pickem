@@ -5,10 +5,17 @@
   <title>NFL Week 1 Pick ’Em (2025)</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <style>
-    body { font-family: Arial, sans-serif; margin: 20px; }
-    h1 { margin-bottom: 10px; }
-    form { max-width: 600px; }
-    .game { border: 1px solid #ccc; padding: 10px; margin-bottom: 12px; border-radius: 5px; }
+    body { font-family: Arial, sans-serif; margin: 20px; margin: 0; /* removes default white spacing */
+      height: 100vh;
+      background-image: url("./assets/pics/Untitled\ design.svg");
+      background-size: cover;       /* make it fill the whole page */
+      background-position: center;  /* center the image */
+      background-repeat: no-repeat; /* prevent tiling */
+      background-attachment: fixed; /* keeps background still when scrolling */
+      color: white}
+    h1 { margin-bottom: 10px; padding-left: 275px;}
+    form { max-width: 600px; padding-left: 275px;}
+    .game { border: 1px solid hsl(83, 33%, 46%); padding: 10px; margin-bottom: 12px; border-radius: 5px; }
     .game-header { font-weight: bold; margin-bottom: 8px; }
     .teams { display: flex; gap: 20px; }
     .teams label { display: flex; align-items: center; gap: 5px; }
@@ -18,6 +25,9 @@
   </style>
 </head>
 <body>
+   <header>
+    <img src="./assets/pics/Pick'em logo.png" alt="Header Logo" style="max-width: 200px; height: auto; display: block; margin: 0 auto 20px; padding-top: 20px;">
+  </header>
   <h1>NFL Week 1 Pick ’Em – 2025</h1>
   <form id="pickemForm">
     <div>
@@ -26,6 +36,7 @@
         <input type="text" id="username" required>
       </label>
     </div>
+    <br></br>
 
     <!-- Thursday -->
     <div class="game">
@@ -171,6 +182,10 @@
     <button type="submit">Submit Picks</button>
   </form>
 
+   <footer>
+    <p style="text-align: center;">&copy; 2025 NFL Pick 'Em. All rights reserved. An Arroz Con Pollo Web Design.</p>
+  </footer>
+
   <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
 <script>
   // Initialize EmailJS
@@ -224,4 +239,4 @@
       alert("There was a problem sending your picks. Check console for details.");
     });
   });
-</script>
+  </script>
