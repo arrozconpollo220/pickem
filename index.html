@@ -1,242 +1,41 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>NFL Week 1 Pick ’Em (2025)</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="robots" content="noindex, nofollow" />
+  <title>Site Maintenance — Pick'em</title>
   <style>
-    body { font-family: Arial, sans-serif; margin: 20px; margin: 0; /* removes default white spacing */
-      height: 100vh;
-      background-image: url("./assets/pics/Pick\'em\ background\ 2.png");
-      background-size: cover;       /* make it fill the whole page */
-      background-position: center;  /* center the image */
-      background-repeat: no-repeat; /* prevent tiling */
-      background-attachment: fixed; /* keeps background still when scrolling */
-      color: white}
-    h1 { margin-bottom: 10px;}
-    form { max-width: 600px;}
-    .game { border: 1px solid hsl(83, 33%, 46%); padding: 10px; margin-bottom: 12px; border-radius: 5px; }
-    .game-header { font-weight: bold; margin-bottom: 4px; }
-    .teams { display: flex; gap: 20px; }
-    .teams label { display: flex; align-items: center; gap: 5px; }
-    .tiebreaker { margin-top: 8px; }
-    input[type="number"] { width: 60px; }
-    button { padding: 8px 16px; margin-top: 10px; }
+    :root{--bg:#0f1724;--card:#0b1220;--text:#e6eef8;--muted:#9aa4b2;--accent:#10b981}
+    *{box-sizing:border-box;margin:0;padding:0}
+    html,body{height:100%}
+    body{font-family:Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, Arial;display:flex;align-items:center;justify-content:center;background:linear-gradient(180deg,#071029 0%, #0f1724 100%);color:var(--text);padding:24px}
+    .card{max-width:820px;width:100%;background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.04);padding:28px;border-radius:12px;box-shadow:0 10px 30px rgba(2,6,23,0.6)}
+    h1{font-size:clamp(20px,4vw,28px);margin-bottom:10px}
+    p{color:var(--muted);line-height:1.5;margin-bottom:12px}
+    .strong{color:var(--text);font-weight:600}
+    .note{margin-top:14px;color:var(--muted);font-size:14px}
+    .footer{margin-top:18px;display:flex;gap:10px;align-items:center}
+    .logo{font-weight:700;color:var(--accent);letter-spacing:0.4px}
+    @media (max-width:520px){.card{padding:20px}}
   </style>
 </head>
 <body>
-   <header>
-    <img src="./assets/pics/Pick'em logo.png" alt="Header Logo" style="max-width: 200px; height: auto; display: block; margin: 0 auto 20px; padding-top: 20px;   border: 8px solid hsl(83, 33%, 46%); border-radius: 4px;">
-  </header>
-  <h1>NFL Week 1 Pick ’Em – 2025</h1>
-  <form id="pickemForm">
-    <div>
-      <label>
-        Your Name & Email:
-        <input type="text" id="username" required>
-      </label>
+  <main class="card" role="main" aria-labelledby="title">
+    <h1 id="title">This site is under maintenance</h1>
+    <p>We are updating the site for <span class="strong">next week's Pick'em lineup</span>. While we prepare the matchups and interface, the site will be temporarily unavailable.</p>
+
+    <p><span class="strong">Downtime schedule:</span> The site will go down every <span class="strong">Thursday after 4:00 PM</span>.</p>
+
+    <p><span class="strong">Return:</span> Don’t worry — we will be back up <span class="strong">Tuesday morning</span> so you can make your selections.</p>
+
+    <p class="note">If you need help while the site is offline, email <a href="mailto:support@example.com" style="color:inherit;text-decoration:underline">support@example.com</a>.</p>
+
+    <div class="footer">
+      <div class="logo">Good Luck!</div>
+      <div style="flex:1"></div>
+      <div class="note">— Pick'em Team</div>
     </div>
-    <br></br>
-
-    <!-- Thursday -->
-    <div class="game">
-      <div class="game-header">Thu, Sep 4 – 8:20 PM ET</div>
-      <div class="teams">
-        <label><input type="radio" name="game0" value="Dallas Cowboys"> Dallas Cowboys</label>
-        <label><input type="radio" name="game0" value="Philadelphia Eagles"> Philadelphia Eagles</label>
-      </div>
-    </div>
-
-    <!-- Friday (Brazil) -->
-    <div class="game">
-      <div class="game-header">Fri, Sep 5 – 8:00 PM ET (São Paulo)</div>
-      <div class="teams">
-        <label><input type="radio" name="game1" value="Kansas City Chiefs"> Kansas City Chiefs</label>
-        <label><input type="radio" name="game1" value="Los Angeles Chargers"> Los Angeles Chargers</label>
-      </div>
-    </div>
-
-    <!-- Sunday 1:00 PM ET slate -->
-    <div class="game">
-      <div class="game-header">Sun, Sep 7 – 1:00 PM ET</div>
-      <div class="teams">
-        <label><input type="radio" name="game2" value="Tampa Bay Buccaneers"> Tampa Bay Buccaneers</label>
-        <label><input type="radio" name="game2" value="Atlanta Falcons"> Atlanta Falcons</label>
-      </div>
-    </div>
-
-    <div class="game">
-      <div class="game-header">Sun, Sep 7 – 1:00 PM ET</div>
-      <div class="teams">
-        <label><input type="radio" name="game3" value="Cincinnati Bengals"> Cincinnati Bengals</label>
-        <label><input type="radio" name="game3" value="Cleveland Browns"> Cleveland Browns</label>
-      </div>
-    </div>
-
-    <div class="game">
-      <div class="game-header">Sun, Sep 7 – 1:00 PM ET</div>
-      <div class="teams">
-        <label><input type="radio" name="game4" value="Miami Dolphins"> Miami Dolphins</label>
-        <label><input type="radio" name="game4" value="Indianapolis Colts"> Indianapolis Colts</label>
-      </div>
-    </div>
-
-    <div class="game">
-      <div class="game-header">Sun, Sep 7 – 1:00 PM ET</div>
-      <div class="teams">
-        <label><input type="radio" name="game5" value="Las Vegas Raiders"> Las Vegas Raiders</label>
-        <label><input type="radio" name="game5" value="New England Patriots"> New England Patriots</label>
-      </div>
-    </div>
-
-    <div class="game">
-      <div class="game-header">Sun, Sep 7 – 1:00 PM ET</div>
-      <div class="teams">
-        <label><input type="radio" name="game6" value="Arizona Cardinals"> Arizona Cardinals</label>
-        <label><input type="radio" name="game6" value="New Orleans Saints"> New Orleans Saints</label>
-      </div>
-    </div>
-
-    <div class="game">
-      <div class="game-header">Sun, Sep 7 – 1:00 PM ET</div>
-      <div class="teams">
-        <label><input type="radio" name="game7" value="Pittsburgh Steelers"> Pittsburgh Steelers</label>
-        <label><input type="radio" name="game7" value="New York Jets"> New York Jets</label>
-      </div>
-    </div>
-
-    <div class="game">
-      <div class="game-header">Sun, Sep 7 – 1:00 PM ET</div>
-      <div class="teams">
-        <label><input type="radio" name="game8" value="New York Giants"> New York Giants</label>
-        <label><input type="radio" name="game8" value="Washington Commanders"> Washington Commanders</label>
-      </div>
-    </div>
-
-    <div class="game">
-      <div class="game-header">Sun, Sep 7 – 1:00 PM ET</div>
-      <div class="teams">
-        <label><input type="radio" name="game9" value="Carolina Panthers"> Carolina Panthers</label>
-        <label><input type="radio" name="game9" value="Jacksonville Jaguars"> Jacksonville Jaguars</label>
-      </div>
-    </div>
-
-    <!-- Sunday 4:05 PM ET slate -->
-    <div class="game">
-      <div class="game-header">Sun, Sep 7 – 4:05 PM ET</div>
-      <div class="teams">
-        <label><input type="radio" name="game10" value="Tennessee Titans"> Tennessee Titans</label>
-        <label><input type="radio" name="game10" value="Denver Broncos"> Denver Broncos</label>
-      </div>
-    </div>
-
-    <div class="game">
-      <div class="game-header">Sun, Sep 7 – 4:05 PM ET</div>
-      <div class="teams">
-        <label><input type="radio" name="game11" value="San Francisco 49ers"> San Francisco 49ers</label>
-        <label><input type="radio" name="game11" value="Seattle Seahawks"> Seattle Seahawks</label>
-      </div>
-    </div>
-
-    <!-- Sunday 4:25 PM ET slate -->
-    <div class="game">
-      <div class="game-header">Sun, Sep 7 – 4:25 PM ET</div>
-      <div class="teams">
-        <label><input type="radio" name="game12" value="Detroit Lions"> Detroit Lions</label>
-        <label><input type="radio" name="game12" value="Green Bay Packers"> Green Bay Packers</label>
-      </div>
-    </div>
-
-    <div class="game">
-      <div class="game-header">Sun, Sep 7 – 4:25 PM ET</div>
-      <div class="teams">
-        <label><input type="radio" name="game13" value="Houston Texans"> Houston Texans</label>
-        <label><input type="radio" name="game13" value="Los Angeles Rams"> Los Angeles Rams</label>
-      </div>
-    </div>
-
-    <!-- Sunday Night -->
-    <div class="game">
-      <div class="game-header">Sun, Sep 7 – 8:20 PM ET</div>
-      <div class="teams">
-        <label><input type="radio" name="game14" value="Baltimore Ravens"> Baltimore Ravens</label>
-        <label><input type="radio" name="game14" value="Buffalo Bills"> Buffalo Bills</label>
-      </div>
-    </div>
-
-    <!-- Monday Night Football (Tie-Breaker) -->
-    <div class="game">
-      <div class="game-header">Mon, Sep 8 – 8:15 PM ET (Monday Night Football)</div>
-      <div class="teams">
-        <label><input type="radio" name="game15" value="Minnesota Vikings"> Minnesota Vikings</label>
-        <label><input type="radio" name="game15" value="Chicago Bears"> Chicago Bears</label>
-      </div>
-      <div class="tiebreaker">
-        <label>
-          Tie-Breaker: Total Points Scored in Monday Night Football game. (if there are two games on Monday night, it will be the last game.) (0–100): 
-          <input type="number" id="tiebreaker" min="0" max="100" required>
-        </label>
-      </div>
-    </div>
-
-    <button type="submit">Submit Picks</button>
-  </form>
-
-   <footer>
-    <p style="text-align: center; padding-bottom: 20px;">&copy; 2025 NFL Pick 'Em. All rights reserved. An Arroz Con Pollo Web Design.</p>
-  </footer>
-
-  <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
-<script>
-  // Initialize EmailJS
-  (function() {
-    emailjs.init("ZB4difRsgRgAQKiWH"); // your public key
-  })();
-
-  const form = document.getElementById("pickemForm");
-
-  form.addEventListener("submit", function(event) {
-    event.preventDefault();
-
-    var name = document.getElementById("username").value.trim();
-    if (!name) {
-      alert("You forgot to enter your name and EMAIL, BRO!!!");
-      return;
-    }
-
-    // Collect picks with game numbers
-    var picksList = [];
-    for (var i = 0; i < 16; i++) {
-      var sel = document.querySelector('input[name="game' + i + '"]:checked');
-      picksList.push("Game " + (i + 1) + ": " + (sel ? sel.value : "No Pick"));
-    }
-
-    var picksFormatted = picksList.join("\n"); // nicer for emails
-
-    var tiebreaker = document.getElementById("tiebreaker").value;
-    var numTB = Number(tiebreaker);
-    if (tiebreaker === "" || isNaN(numTB) || numTB < 0 || numTB > 100) {
-      alert("Please enter a tie-breaker between 0 and 100.");
-      return;
-    }
-
-    var payload = { name: name, picks: picksList, tiebreaker: tiebreaker };
-
-    // Save locally
-    localStorage.setItem("nfl_week1_pickem", JSON.stringify(payload));
-
-    // Send via EmailJS
-    emailjs.send("service_wpho2gf", "template_xrga1vs", {
-      username: name,
-      picks: picksFormatted,
-      tiebreaker: tiebreaker
-    })
-    .then(function() {
-      alert("Your picks have been saved and emailed to Emily for submission. Good luck!");
-      form.reset(); // clear form
-    }, function(error) {
-      console.error("EmailJS error:", error);
-      alert("There was a problem sending your picks. Check console for details.");
-    });
-  });
-  </script>
+  </main>
+</body>
+</html>
