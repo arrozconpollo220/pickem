@@ -6,26 +6,35 @@
   <meta name="robots" content="noindex, nofollow" />
   <title>Site Maintenance — Pick'em</title>
   <style>
-
-    body { font-family: Arial, sans-serif; margin: 20px; margin: 0; /* removes default white spacing */
+    body {
+      font-family: Arial, sans-serif; margin: 0;
       height: 100vh;
       background-image: url("./assets/pics/2.png");
-      background-size: cover;       /* make it fill the whole page */
-      background-position: center;  /* center the image */
-      background-repeat: no-repeat; /* prevent tiling */
-      background-attachment: fixed; /* keeps background still when scrolling */
-      color: white}
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      background-attachment: fixed;
+      color: white
+    }
     h1 { margin-bottom: 10px;}
     form { max-width: 600px;}
-    .game { border: 1px solid hsl(83, 33%, 46%); padding: 10px; margin-bottom: 12px; border-radius: 5px; }
+    .game {
+      border: 1px solid hsl(83, 33%, 46%);
+      padding: 10px;
+      margin-bottom: 12px;
+      border-radius: 5px;
+      transition: border 0.3s;
+    }
     .game-header { font-weight: bold; margin-bottom: 4px; }
     .teams { display: flex; gap: 20px; }
     .teams label { display: flex; align-items: center; gap: 5px; }
     .tiebreaker { margin-top: 8px; }
     input[type="number"] { width: 60px; }
     button { padding: 8px 16px; margin-top: 10px; }
+    .error { border: 2px solid red !important; } /* highlight missing picks */
   </style>
 </head>
+
 <body>
    <header>
     <img src="./assets/pics/Pick'em logo.png" alt="Header Logo" style="max-width: 200px; height: auto; display: block; margin: 0 auto 20px; padding-top: 20px;   border: 8px solid hsl(83, 33%, 46%); border-radius: 4px;">
@@ -191,17 +200,26 @@
     <p style="text-align: center; padding-bottom: 20px;">&copy; 2025 NFL Pick 'Em. All rights reserved. An Arroz Con Pollo Web Design.</p>
   </footer>
 
-  <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
+ <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
 <script>
-  // Initialize EmailJS
   (function() {
-    emailjs.init("ZB4difRsgRgAQKiWH"); // your public key
+    emailjs.init("ZB4difRsgRgAQKiWH");
   })();
 
   const form = document.getElementById("pickemForm");
 
+  // Live validation: remove red border when a user makes a pick
+  document.querySelectorAll(".game input[type=radio]").forEach(input => {
+    input.addEventListener("change", function() {
+      this.closest(".game").classList.remove("error");
+    });
+  });
+
   form.addEventListener("submit", function(event) {
     event.preventDefault();
+
+    // Reset all highlights first
+    document.querySelectorAll(".game").forEach(g => g.classList.remove("error"));
 
     var name = document.getElementById("username").value.trim();
     if (!name) {
@@ -209,14 +227,25 @@
       return;
     }
 
-    // Collect picks with game numbers
     var picksList = [];
+    var allPicked = true;
+
     for (var i = 0; i < 16; i++) {
       var sel = document.querySelector('input[name="game' + i + '"]:checked');
-      picksList.push("Game " + (i + 1) + ": " + (sel ? sel.value : "No Pick"));
+      var gameDiv = document.querySelector('input[name="game' + i + '"]').closest(".game");
+
+      if (!sel) {
+        allPicked = false;
+        gameDiv.classList.add("error");
+      } else {
+        picksList.push("Game " + (i + 1) + ": " + sel.value);
+      }
     }
 
-    var picksFormatted = picksList.join("\n"); // nicer for emails
+    if (!allPicked) {
+      alert("Please make a pick for all games before submitting.");
+      return;
+    }
 
     var tiebreaker = document.getElementById("tiebreaker").value;
     var numTB = Number(tiebreaker);
@@ -225,12 +254,11 @@
       return;
     }
 
+    var picksFormatted = picksList.join("\n");
     var payload = { name: name, picks: picksList, tiebreaker: tiebreaker };
 
-    // Save locally
     localStorage.setItem("nfl_week1_pickem", JSON.stringify(payload));
 
-    // Send via EmailJS
     emailjs.send("service_wpho2gf", "template_xrga1vs", {
       username: name,
       picks: picksFormatted,
@@ -238,10 +266,10 @@
     })
     .then(function() {
       alert("Your picks have been saved and emailed to Emily for submission. Good luck!");
-      form.reset(); // clear form
+      form.reset();
     }, function(error) {
       console.error("EmailJS error:", error);
       alert("There was a problem sending your picks. Check console for details.");
     });
   });
-  </script>
+</script>
