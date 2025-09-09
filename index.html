@@ -203,7 +203,8 @@
  <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
 <script>
   (function() {
-    emailjs.init("ZB4difRsgRgAQKiWH");
+    // Public Key
+    emailjs.init("3RILetYOuA580VW_S");
   })();
 
   const form = document.getElementById("pickemForm");
@@ -259,7 +260,8 @@
 
     localStorage.setItem("nfl_week1_pickem", JSON.stringify(payload));
 
-    emailjs.send("service_wpho2gf", "template_xrga1vs", {
+     // EmailJS Service ID & Template ID
+    emailjs.send("service_9r97vcq", "template_n6ehca8", {
       username: name,
       picks: picksFormatted,
       tiebreaker: tiebreaker
