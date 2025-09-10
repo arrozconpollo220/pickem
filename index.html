@@ -200,17 +200,15 @@
     <p style="text-align: center; padding-bottom: 20px;">&copy; 2025 NFL Pick 'Em. All rights reserved. An Arroz Con Pollo Web Design.</p>
   </footer>
 
- <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
 <script>
-  (function() {
-    // Public Key
-    emailjs.init("3RILetYOuA580VW_S");
-  })();
-
   const form = document.getElementById("pickemForm");
 
-  // Live validation: remove red border when a user makes a pick
-  document.querySelectorAll(".game input[type=radio]").forEach(input => {
+  // Init the FIRST account
+  emailjs.init("ZB4difRsgRgAQKiWH"); // The First EmialJS accoutn Publie Key "Alex's" 
+
+    // Removes red error aound box when error is corrected
+    document.querySelectorAll(".game input[type=radio]").forEach(input => {
     input.addEventListener("change", function() {
       this.closest(".game").classList.remove("error");
     });
@@ -219,9 +217,8 @@
   form.addEventListener("submit", function(event) {
     event.preventDefault();
 
-    // Reset all highlights first
+    // Validation
     document.querySelectorAll(".game").forEach(g => g.classList.remove("error"));
-
     var name = document.getElementById("username").value.trim();
     if (!name) {
       alert("You forgot to enter your name and EMAIL, BRO!!!");
@@ -234,7 +231,6 @@
     for (var i = 0; i < 16; i++) {
       var sel = document.querySelector('input[name="game' + i + '"]:checked');
       var gameDiv = document.querySelector('input[name="game' + i + '"]').closest(".game");
-
       if (!sel) {
         allPicked = false;
         gameDiv.classList.add("error");
@@ -256,22 +252,30 @@
     }
 
     var picksFormatted = picksList.join("\n");
-    var payload = { name: name, picks: picksList, tiebreaker: tiebreaker };
 
-    localStorage.setItem("nfl_week1_pickem", JSON.stringify(payload));
-
-     // EmailJS Service ID & Template ID
-    emailjs.send("service_9r97vcq", "template_n6ehca8", {
+    var payload = {
       username: name,
       picks: picksFormatted,
       tiebreaker: tiebreaker
-    })
-    .then(function() {
-      alert("Your picks have been saved and emailed to Emily for submission. Good luck!");
-      form.reset();
-    }, function(error) {
-      console.error("EmailJS error:", error);
-      alert("There was a problem sending your picks. Check console for details.");
-    });
+    };
+
+    // Send to fist EmailJS account "Alex's"
+    emailjs.send("service_wpho2gf", "template_xrga1vs", payload)
+      .then(function() {
+        console.log("Sent to Account Alex");
+      }, function(error) {
+        console.error("EmailJS error (Account Alex):", error);
+      });
+
+    // Send to second EmailJS account "Emily's"
+    emailjs.send("service_9r97vcq", "template_n6ehca8", payload, "3RILetYOuA580VW_S")
+      .then(function() {
+        console.log("Sent to Account Emily");
+      }, function(error) {
+        console.error("EmailJS error (Account Emily):", error);
+      });
+
+    alert("Your picks have been recorded and sent to Emily. Please remember to Venmo your fee to her and Good luck!");
+    form.reset();
   });
 </script>
