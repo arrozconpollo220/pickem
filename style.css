@@ -188,3 +188,10 @@ button {
         transform: translateX(-50%);
       }
     }
+
+    @media (max-width: 600px) {
+  .marquee-content img {
+    height: 40px;
+    gap: 25px;
+  }
+}
