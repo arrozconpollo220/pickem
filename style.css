@@ -150,3 +150,39 @@ button {
   border-radius: 5px;
   font-weight: bold;
 }
+
+
+.marquee {
+      width: 100%;
+      overflow: hidden;
+      position: relative;
+      background: #000;
+      padding: 10px 0;
+    }
+
+    .marquee-content {
+      display: flex;
+      align-items: center;
+      gap: 40px;
+      animation: scroll 30s linear infinite;
+    }
+
+    .marquee-content img {
+      height: 60px;
+      width: auto;
+      transition: transform 0.3s;
+    }
+
+    .marquee-content img:hover {
+      transform: scale(1.15);
+    }
+
+    /* Scroll animation */
+    @keyframes scroll {
+      from {
+        transform: translateX(0);
+      }
+      to {
+        transform: translateX(-50%);
+      }
+    }
