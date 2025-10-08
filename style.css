@@ -60,6 +60,11 @@ form {
   display: flex;
   gap: 20px;
   flex-wrap: wrap;
+  justify-content: flex-start; /* left-align the buttons */
+  align-items: center;         /* keep vertical alignment */
+  text-align: left;            /* optional for label text */
+}
+
 }
 
 .teams label {
@@ -202,11 +207,15 @@ button {
     margin: 10px auto;
   }
 
-  .teams {
-    flex-direction: column;
-    align-items: center;
-    gap: 10px;
-  }
+.teams {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+  justify-content: flex-start; /* left-align the buttons */
+  align-items: center;         /* keep vertical alignment */
+  text-align: left;            /* optional for label text */
+}
+
 
   .button-row, .venmo-container {
     flex-direction: column;
@@ -237,9 +246,15 @@ button {
     margin: 0 auto;
   }
 
-  .teams {
-    justify-content: center;
-  }
+ .teams {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+  justify-content: flex-start; /* left-align the buttons */
+  align-items: center;         /* keep vertical alignment */
+  text-align: left;            /* optional for label text */
+}
+
 
   .button-row, .venmo-container {
     justify-content: center;
@@ -331,9 +346,14 @@ button {
 
   /* Adjust team selection boxes */
   .teams {
-    justify-content: center;
-    gap: 15px;
-  }
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+  justify-content: flex-start; /* left-align the buttons */
+  align-items: center;         /* keep vertical alignment */
+  text-align: left;            /* optional for label text */
+}
+
 
   /* Adjust marquee images for balance */
   .marquee-content img {
