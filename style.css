@@ -1,3 +1,4 @@
+/* ---------------- GENERAL ---------------- */
 body {
   font-family: Arial, sans-serif;
   margin: 0;
@@ -38,7 +39,7 @@ form {
 .header-logo {
   max-width: 200px;
   display: block;
-  margin: 20px auto 20px;
+  margin: 20px auto;
   border: 8px solid hsl(83, 33%, 46%);
   border-radius: 4px;
 }
@@ -56,19 +57,31 @@ form {
   margin-bottom: 4px;
 }
 
+/* ---------------- TEAM SELECTION BOXES ---------------- */
 .teams {
   display: flex;
-  gap: 20px;
-  flex-wrap: wrap;
-  justify-content: flex-start; /* left-align the buttons */
-  align-items: center;         /* keep vertical alignment */
-  text-align: left;            /* optional for label text */
+  gap: clamp(10px, 4vw, 20px); /* responsive gap */
+  flex-wrap: nowrap;            /* keep buttons inline */
+  justify-content: flex-start;  /* left-align buttons */
+  align-items: center;
+  overflow-x: auto;             /* scroll if too many items */
+  padding-bottom: 5px;
+  text-align: left;
 }
 
 .teams label {
   display: flex;
   align-items: center;
   gap: 5px;
+  padding: 5px 10px;
+  border: 1px solid hsl(83, 33%, 46%);
+  border-radius: 5px;
+  min-width: clamp(120px, 18vw, 160px); /* uniform width */
+  max-width: clamp(120px, 18vw, 160px);
+  justify-content: flex-start;
+  box-sizing: border-box;
+  white-space: nowrap;         /* prevent text wrap */
+  font-size: clamp(14px, 2vw, 16px);
 }
 
 .tiebreaker {
@@ -96,7 +109,7 @@ button {
   border-radius: 5px;
 }
 
-/* Modal */
+/* ---------------- MODAL ---------------- */
 #customAlert {
   position: fixed;
   top: 0; left: 0;
@@ -154,153 +167,67 @@ button {
   font-weight: bold;
 }
 
-
+/* ---------------- MARQUEE ---------------- */
 .marquee {
-      width: 100%;
-      overflow: hidden;
-      position: relative;
-      background: #000;
-      padding: 10px 0;
-    }
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+  background: #000;
+  padding: 10px 0;
+}
 
-    .marquee-content {
-      display: flex;
-      align-items: center;
-      flex-wrap: nowrap;      
-      white-space: nowrap; 
-      gap: 40px;
-      animation: scroll 10s linear infinite;
-      will-change: transform;
-    }
+.marquee-content {
+  display: flex;
+  align-items: center;
+  flex-wrap: nowrap;      
+  white-space: nowrap; 
+  gap: 40px;
+  animation: scroll 10s linear infinite;
+  will-change: transform;
+}
 
-    .marquee-content img {
-      height: 60px;
-      width: auto;
-      transition: transform 0.3s;
-    }
+.marquee-content img {
+  height: 60px;
+  width: auto;
+  transition: transform 0.3s;
+}
 
-    .marquee-content img:hover {
-      transform: scale(1.15);
-    }
+.marquee-content img:hover {
+  transform: scale(1.15);
+}
 
-   /* ---------- Small Phones (Portrait) ---------- */
+@keyframes scroll {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+
+/* ---------------- RESPONSIVE ---------------- */
+
+/* Small Phones */
 @media (max-width: 480px) {
-  body {
-    text-align: center;
-  }
-
-  #contentWrapper {
-    padding: 10px;
-    align-items: center;
-    justify-content: flex-start;
-  }
-
-  form {
-    width: 95%;
-    margin: 0 auto;
-  }
-
-  .header-logo {
-    max-width: 150px;
-    margin: 10px auto;
-  }
-
-.teams {
-  display: flex;
-  gap: 20px;
-  flex-wrap: wrap;
-  justify-content: flex-start; /* left-align the buttons */
-  align-items: center;         /* keep vertical alignment */
-  text-align: left;            /* optional for label text */
+  #contentWrapper { padding: 10px; align-items: center; }
+  form { width: 95%; }
+  .header-logo { max-width: 150px; margin: 10px auto; }
+  button, .venmo-btn { width: 90%; max-width: 300px; }
+  .marquee-content img { height: 35px; gap: 15px; }
 }
 
-
-  .button-row, .venmo-container {
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-  }
-
-  button, .venmo-btn {
-    width: 90%;
-    max-width: 300px;
-  }
-
-  .marquee-content img {
-    height: 35px;
-    gap: 15px;
-  }
-}
-
-/* ---------- Medium Phones (like iPhone 13/14, Pixel 7) ---------- */
+/* Medium Phones */
 @media (min-width: 481px) and (max-width: 767px) {
-  #contentWrapper {
-    padding: 20px;
-    align-items: center;
-  }
-
-  form {
-    width: 90%;
-    margin: 0 auto;
-  }
-
- .teams {
-  display: flex;
-  gap: 20px;
-  justify-content: flex-start; /* left-align the buttons */
-  align-items: center;         /* keep vertical alignment */
-  text-align: left;            /* optional for label text */
+  #contentWrapper { padding: 20px; align-items: center; }
+  form { width: 90%; }
+  button, .venmo-btn { min-width: 160px; }
+  .marquee-content img { height: 45px; }
 }
 
-
-  .button-row, .venmo-container {
-    justify-content: center;
-  }
-
-  button, .venmo-btn {
-    width: auto;
-    min-width: 160px;
-  }
-
-  .marquee-content img {
-    height: 45px;
-  }
-}
-
-/* ---------- Large Phones / Small Tablets ---------- */
+/* Large Phones / Small Tablets */
 @media (min-width: 768px) and (max-width: 1024px) {
-  #contentWrapper {
-    padding: 30px;
-    align-items: center;
-  }
-
-  form {
-    width: 80%;
-    margin: 0 auto;
-  }
-
-  .teams {
-  display: flex;
-  gap: 20px;
-  flex-wrap: wrap;
-  justify-content: flex-start; /* left-align the buttons */
-  align-items: center;         /* keep vertical alignment */
-  text-align: left;            /* optional for label text */
+  #contentWrapper { padding: 30px; align-items: center; }
+  form { width: 80%; }
+  .marquee-content img { height: 50px; }
 }
 
-
-  .button-row {
-    justify-content: center;
-    gap: 20px;
-  }
-
-  .marquee-content img {
-    height: 50px;
-  }
-}
-
-
-/* ---------- Samsung Galaxy S23 Ultra Specific ---------- */
+/* Samsung Galaxy S23 Ultra Specific */
 @media only screen 
   and (min-device-width: 390px) 
   and (max-device-width: 430px)
@@ -308,91 +235,8 @@ button {
   and (max-device-height: 950px)
   and (-webkit-min-device-pixel-ratio: 3) {
 
-  /* Overall centering fixes */
-  #contentWrapper {
-    padding: 25px 15px;
-    align-items: center;
-    justify-content: flex-start;
-    text-align: center;
-  }
-
-  form {
-    width: 90%;
-    margin: 0 auto;
-    text-align: center;
-  }
-
-  h1.title, .centered {
-    text-align: center;
-  }
-
-  /* Button & Venmo alignment */
-  .button-row, .venmo-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-wrap: wrap;
-    gap: 15px;
-  }
-
-  button, .venmo-btn {
-    width: auto;
-    min-width: 150px;
-    text-align: center;
-  }
-
-  /* Adjust team selection boxes */
-  .teams {
-  display: flex;
-  gap: 20px;
-  flex-wrap: wrap;
-  justify-content: flex-start; /* left-align the buttons */
-  align-items: center;         /* keep vertical alignment */
-  text-align: left;            /* optional for label text */
+  #contentWrapper { padding: 25px 15px; align-items: center; text-align: center; }
+  form { width: 90%; text-align: center; }
+  button, .venmo-btn { min-width: 150px; }
+  .marquee-content img { height: 45px; gap: 25px; }
 }
-
-
-  /* Adjust marquee images for balance */
-  .marquee-content img {
-    height: 45px;
-    gap: 25px;
-  }
-
-  /* Optional: tighten vertical spacing */
-  .game, .byes {
-    width: 100%;
-    text-align: center;
-  }
-
-  /* Ensure the page background scales nicely */
-  #contentWrapper {
-    background-size: cover;
-    background-position: center;
-  }
-}
-
-@keyframes scroll {
-  from {
-    transform: translateX(0);
-  }
-  to {
-    transform: translateX(-50%);
-  }
-}
-
-.marquee-content {
-  animation: scroll 10s linear infinite;
-}
-
-@media (max-width: 1024px) {
-  .marquee-content {
-    animation: scroll 10s linear infinite !important;
-  }
-}
-
-@media (max-width: 600px) {
-  .marquee-content {
-    animation: scroll 10s linear infinite !important;
-  }
-}
-
