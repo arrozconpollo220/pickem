@@ -358,18 +358,18 @@ button {
 }
 
 .marquee-content {
-  animation: scroll 18s linear infinite;
+  animation: scroll 10s linear infinite;
 }
 
 @media (max-width: 1024px) {
   .marquee-content {
-    animation: scroll 18s linear infinite !important;
+    animation: scroll 10s linear infinite !important;
   }
 }
 
 @media (max-width: 600px) {
   .marquee-content {
-    animation: scroll 18s linear infinite !important;
+    animation: scroll 10s linear infinite !important;
   }
 }
 
