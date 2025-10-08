@@ -167,6 +167,7 @@ button {
       white-space: nowrap; 
       gap: 40px;
       animation: scroll 30s linear infinite;
+      will-change: transform;
     }
 
     .marquee-content img {
@@ -347,3 +348,11 @@ button {
   }
 }
 
+@keyframes scroll {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
