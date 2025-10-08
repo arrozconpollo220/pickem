@@ -166,7 +166,7 @@ button {
       flex-wrap: nowrap;      
       white-space: nowrap; 
       gap: 40px;
-      animation: scroll 30s linear infinite;
+      animation: scroll 20s linear infinite;
       will-change: transform;
     }
 
@@ -359,6 +359,6 @@ button {
 
 @media (max-width: 1024px) {
   .marquee-content {
-    animation: scroll 10s linear infinite !important;
+    animation: scroll 20s linear infinite !important;
   }
 }
