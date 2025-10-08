@@ -280,3 +280,70 @@ button {
   }
 }
 
+
+/* ---------- Samsung Galaxy S23 Ultra Specific ---------- */
+@media only screen 
+  and (min-device-width: 390px) 
+  and (max-device-width: 430px)
+  and (min-device-height: 850px)
+  and (max-device-height: 950px)
+  and (-webkit-min-device-pixel-ratio: 3) {
+
+  /* Overall centering fixes */
+  #contentWrapper {
+    padding: 25px 15px;
+    align-items: center;
+    justify-content: flex-start;
+    text-align: center;
+  }
+
+  form {
+    width: 90%;
+    margin: 0 auto;
+    text-align: center;
+  }
+
+  h1.title, .centered {
+    text-align: center;
+  }
+
+  /* Button & Venmo alignment */
+  .button-row, .venmo-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 15px;
+  }
+
+  button, .venmo-btn {
+    width: auto;
+    min-width: 150px;
+    text-align: center;
+  }
+
+  /* Adjust team selection boxes */
+  .teams {
+    justify-content: center;
+    gap: 15px;
+  }
+
+  /* Adjust marquee images for balance */
+  .marquee-content img {
+    height: 45px;
+    gap: 25px;
+  }
+
+  /* Optional: tighten vertical spacing */
+  .game, .byes {
+    width: 100%;
+    text-align: center;
+  }
+
+  /* Ensure the page background scales nicely */
+  #contentWrapper {
+    background-size: cover;
+    background-position: center;
+  }
+}
+
