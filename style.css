@@ -359,6 +359,6 @@ button {
 
 @media (max-width: 1024px) {
   .marquee-content {
-    animation: scroll 60s linear infinite !important;
+    animation: scroll 10s linear infinite !important;
   }
 }
