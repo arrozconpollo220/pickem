@@ -163,6 +163,8 @@ button {
     .marquee-content {
       display: flex;
       align-items: center;
+      flex-wrap: nowrap;      
+      white-space: nowrap; 
       gap: 40px;
       animation: scroll 30s linear infinite;
     }
