@@ -65,8 +65,6 @@ form {
   text-align: left;            /* optional for label text */
 }
 
-}
-
 .teams label {
   display: flex;
   align-items: center;
@@ -249,7 +247,6 @@ button {
  .teams {
   display: flex;
   gap: 20px;
-  flex-wrap: wrap;
   justify-content: flex-start; /* left-align the buttons */
   align-items: center;         /* keep vertical alignment */
   text-align: left;            /* optional for label text */
