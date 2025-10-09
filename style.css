@@ -283,17 +283,22 @@ button {
     margin: 10px auto;
   }
 
+  /* 💡 NEW: Reduce vertical padding on the game boxes */
+  .game,
+  .byes {
+    padding: 8px; 
+  }
+
   .teams {
-    /* If team names are VERY long, consider flex-wrap: wrap; 
-       but we keep nowrap to force side-by-side unless explicitly wrapping */
     flex-wrap: nowrap; 
-    gap: 10px;
+    gap: 8px; /* Slightly reduced gap */
   }
 
   .teams label {
-    flex: 1; /* Ensures equal distribution of space */
+    flex: 1; 
     font-size: 14px;
-    padding: 8px 5px;
+    /* 💡 NEW: Reduce padding inside the label */
+    padding: 5px; 
   }
 
   .marquee-content img {
@@ -312,12 +317,20 @@ button {
     width: 90%;
   }
 
+  /* 💡 NEW: Reduce vertical padding on the game boxes */
+  .game,
+  .byes {
+    padding: 8px; 
+  }
+
   .teams {
     gap: 10px;
   }
 
   .teams label {
     font-size: 15px;
+     /* 💡 NEW: Reduce padding inside the label */
+    padding: 6px 8px;
   }
 
   .marquee-content img {
@@ -340,10 +353,3 @@ button {
     font-size: 16px;
   }
 }
-
-/* *** Removed specific iPhone media query (390x844 and 375-430px) ***
-   The general mobile styles now handle these correctly due to the 
-   global fixes for white-space: normal and min-width: 0 on the label. 
-   If you still need specific fine-tuning for a particular device, 
-   re-introduce a simplified version of that query.
-*/
