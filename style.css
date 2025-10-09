@@ -264,7 +264,6 @@ button {
 
 /* =========================
    5. RESPONSIVE STYLES
-   (Media queries merged by breakpoint, from smallest up)
 ========================= */
 
 /* --- Up to 480px (Small Phones/Default Mobile) --- */
@@ -277,32 +276,37 @@ button {
   form {
     width: 95%;
   }
-
-  .header-logo {
-    max-width: 150px;
-    margin: 10px auto;
+  
+  .game-header {
+      margin-bottom: 2px; /* Slight reduction for header spacing */
+      font-size: 14px;
   }
 
-  /* 💡 NEW: Reduce vertical padding on the game boxes */
+  /* 🤏 FURTHER REDUCTION: Reduce vertical padding on the game boxes */
   .game,
   .byes {
-    padding: 8px; 
+    padding: 6px; /* Reduced from 8px to 6px */
+    margin-bottom: 10px; /* Reduced margin */
   }
 
   .teams {
-    flex-wrap: nowrap; 
-    gap: 8px; /* Slightly reduced gap */
+    gap: 6px; /* Reduced gap */
   }
 
   .teams label {
     flex: 1; 
-    font-size: 14px;
-    /* 💡 NEW: Reduce padding inside the label */
-    padding: 5px; 
+    font-size: 13px; /* Reduced font size for tighter fit */
+    /* 🤏 FURTHER REDUCTION: Reduce padding inside the label */
+    padding: 3px 5px; /* Reduced vertical padding */
   }
 
+  /* Reduce size of the radio button itself */
+  .teams input[type="radio"] {
+      transform: scale(1.1); /* Slightly smaller radio button */
+  }
+  
   .marquee-content img {
-    height: 35px;
+    height: 30px; /* Reduced marquee image height */
   }
 }
 
@@ -316,25 +320,25 @@ button {
   form {
     width: 90%;
   }
-
-  /* 💡 NEW: Reduce vertical padding on the game boxes */
+  
+  /* 🤏 FURTHER REDUCTION: Reduce vertical padding on the game boxes */
   .game,
   .byes {
     padding: 8px; 
   }
 
   .teams {
-    gap: 10px;
+    gap: 8px; /* Slightly reduced gap */
   }
 
   .teams label {
-    font-size: 15px;
-     /* 💡 NEW: Reduce padding inside the label */
-    padding: 6px 8px;
+    font-size: 14px; /* Reduced font size */
+     /* 🤏 FURTHER REDUCTION: Reduce padding inside the label */
+    padding: 4px 6px; /* Reduced padding */
   }
 
   .marquee-content img {
-    height: 45px;
+    height: 40px;
   }
 }
 
