@@ -36,7 +36,7 @@ form.addEventListener("submit", function(event) {
   let picksList = [];
   let allPicked = true;
 
-  for (let i = 0; i <=14; i++) {
+  for (let i = 0; i <=12; i++) {
     const sel = document.querySelector(`input[name="game${i}"]:checked`);
     const gameDiv = document.querySelector(`input[name="game${i}"]`).closest(".game");
     if (!sel) {
@@ -50,8 +50,8 @@ form.addEventListener("submit", function(event) {
   const tiebreaker = document.getElementById("tiebreaker").value;
   const numTB = Number(tiebreaker);
 
-  if (tiebreaker === "" || isNaN(numTB) || numTB < 0 || numTB > 100) {
-    alert("Please enter a tie-breaker between 0 and 100.");
+  if (tiebreaker === "" || isNaN(numTB) || numTB < 0 || numTB > 200) {
+    alert("Please enter a tie-breaker between 0 and 200.");
     return;
   }
 
