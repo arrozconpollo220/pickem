@@ -70,6 +70,19 @@ form.addEventListener("submit", function(event) {
   emailjs.send("service_9r97vcq", "template_n6ehca8", payload, "3RILetYOuA580VW_S")
     .then(() => console.log("Sent to Account Emily"), err => console.error(err));
 
+    // Save picks to localStorage
+let allEntries = JSON.parse(localStorage.getItem("weeklyPicks")) || [];
+
+allEntries.push({
+  name: name,
+  picks: picksList,
+  tiebreaker: tiebreaker,
+  timestamp: new Date().toLocaleString()
+});
+
+localStorage.setItem("weeklyPicks", JSON.stringify(allEntries));
+
+
   // Show modal & blur content
   customAlert.style.display = "flex";
   contentWrapper.style.filter = "blur(10px)";

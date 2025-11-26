@@ -1,0 +1,87 @@
+<!doctype html>
+<html>
+<head>
+  <title>Week 13 Picks - All Entries</title>
+  <style>
+    body {
+      background: black;
+      color: white;
+      font-family: Arial, sans-serif;
+      padding: 20px;
+    }
+
+    h1 {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    .entry {
+      border: 1px solid #555;
+      padding: 15px;
+      margin-bottom: 15px;
+      border-radius: 6px;
+      background: rgba(255,255,255,0.05);
+    }
+
+    .entry h3 {
+      margin: 0 0 5px 0;
+      color: #9acd32;
+    }
+
+    ul {
+      padding-left: 20px;
+    }
+
+    button {
+      padding: 8px 12px;
+      margin: 15px 0;
+      background: red;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+
+<h1>All Week 13 Pick Entries</h1>
+
+<button onclick="clearAll()">Clear All Picks</button>
+
+<div id="results"></div>
+
+<script>
+  const container = document.getElementById("results");
+  const entries = JSON.parse(localStorage.getItem("weeklyPicks")) || [];
+
+  if (entries.length === 0) {
+    container.innerHTML = "<p>No picks submitted yet.</p>";
+  }
+
+  entries.forEach((entry, index) => {
+    const div = document.createElement("div");
+    div.className = "entry";
+
+    let picksHTML = entry.picks.map(p => `<li>${p}</li>`).join("");
+
+    div.innerHTML = `
+      <h3>${entry.name}</h3>
+      <small>Submitted: ${entry.timestamp}</small>
+      <ul>${picksHTML}</ul>
+      <p><strong>Tiebreaker:</strong> ${entry.tiebreaker}</p>
+    `;
+
+    container.appendChild(div);
+  });
+
+  function clearAll() {
+    if (confirm("Are you sure you want to delete all stored picks?")) {
+      localStorage.removeItem("weeklyPicks");
+      location.reload();
+    }
+  }
+</script>
+
+</body>
+</html>
