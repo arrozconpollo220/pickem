@@ -33,15 +33,6 @@ body {
   padding: 20px 0 40px;
 }
 
-@media (max-width: 767px) {
-  #contentWrapper {
-    background-size: 100% auto;
-    background-position: top center;
-    background-repeat: no-repeat;
-    background-color: #000;
-  }
-}
-
 /* Titles & Headers */
 h1.title {
   text-align: center;
