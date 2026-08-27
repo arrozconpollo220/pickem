@@ -26,7 +26,8 @@ body {
 /* Content wrapper */
 #contentWrapper {
   min-height: 100vh;
-  background: url("./assets/pics/Black and Red Modern American Football Tournament Instagram Story.svg") center center / cover no-repeat;
+  background: url("./assets/pics/Black and Red Modern American Football Tournament Instagram Story.svg") center top / cover no-repeat;
+  background-attachment: scroll; /* Prevents mobile Safari fixed background zoom bugs */
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -283,7 +284,9 @@ button {
 
 @media (max-width: 480px) {
   #contentWrapper {
-    padding: 10px 0 40px; 
+    padding: 10px 0 40px;
+    background-size: contain; /* Scales graphic down to fit screen width */
+    background-color: var(--bg-color); /* Fills empty space if aspect ratio leaves gaps */
   }
 
   form {
