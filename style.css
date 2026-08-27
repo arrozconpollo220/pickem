@@ -4,7 +4,7 @@
 
 /* Define the primary accent color for easier changes */
 :root {
-  --accent-color: hsl(83, 33%, 46%); /* Your green-gray border color */
+  --accent-color: hsla(100, 1%, 40%, 0.863); /* Your green-gray border color */
   --highlight-color: rgba(173, 255, 47, 0.25); /* Soft green tint */
   --venmo-color: #3d95ce; /* Blue button color */
   --text-color: #fff;
@@ -22,7 +22,7 @@ body {
 /* Content wrapper */
 #contentWrapper {
   min-height: 100vh;
-  background: url("./assets/pics/2.png") center center / cover no-repeat;
+  background: url("./assets/pics/Black\ and\ Red\ Modern\ American\ Football\ Tournament\ Instagram\ Story.svg") center center / cover no-repeat;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -56,7 +56,7 @@ form {
 
 .game,
 .byes {
-  border: 1px solid var(--accent-color);
+  border: 2px solid var(--accent-color);
   padding: 10px;
   margin-bottom: 12px;
   border-radius: 5px;
@@ -159,7 +159,7 @@ button {
   width: 100%;
   overflow: hidden;
   position: relative;
-  background: var(--bg-color);
+  background: transparent;
   padding: 10px 0;
 }
 
