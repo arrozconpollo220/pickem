@@ -6,25 +6,25 @@ const venmoLink = document.getElementById("venmoLink");
 
 emailjs.init("ZB4difRsgRgAQKiWH");
 
-// Remove red border when corrected
+// Clear error status when selection changes
 document.querySelectorAll(".game input[type=radio]").forEach(input => {
   input.addEventListener("change", function() {
     this.closest(".game").classList.remove("error");
   });
 });
 
-closeAlertBtn.addEventListener("click", () => {
+const closeModal = () => {
   customAlert.style.display = "none";
   contentWrapper.style.filter = "";
-});
+};
 
-venmoLink.addEventListener("click", () => {
-  customAlert.style.display = "none";
-  contentWrapper.style.filter = "";
-});
+closeAlertBtn.addEventListener("click", closeModal);
+venmoLink.addEventListener("click", closeModal);
 
 form.addEventListener("submit", function(event) {
   event.preventDefault();
+  
+  // Clear any existing error highlights
   document.querySelectorAll(".game").forEach(g => g.classList.remove("error"));
 
   const name = document.getElementById("username").value.trim();
@@ -35,13 +35,18 @@ form.addEventListener("submit", function(event) {
 
   let picksList = [];
   let allPicked = true;
+  let firstUnpickedGame = null;
 
   for (let i = 0; i <= 15; i++) {
     const sel = document.querySelector(`input[name="game${i}"]:checked`);
     const gameDiv = document.querySelector(`input[name="game${i}"]`).closest(".game");
+    
     if (!sel) {
       allPicked = false;
       gameDiv.classList.add("error");
+      if (!firstUnpickedGame) {
+        firstUnpickedGame = gameDiv;
+      }
     } else {
       picksList.push(`Game ${i + 1}: ${sel.value}`);
     }
@@ -56,6 +61,7 @@ form.addEventListener("submit", function(event) {
   }
 
   if (!allPicked) {
+    firstUnpickedGame.scrollIntoView({ behavior: "smooth", block: "center" });
     alert("Please make a selection for all games before submitting.");
     return;
   }
@@ -70,21 +76,25 @@ form.addEventListener("submit", function(event) {
   emailjs.send("service_9r97vcq", "template_n6ehca8", payload, "3RILetYOuA580VW_S")
     .then(() => console.log("Sent to Account Emily"), err => console.error(err));
 
-    // Save picks to localStorage
-let allEntries = JSON.parse(localStorage.getItem("weeklyPicks")) || [];
+  // Save picks to localStorage
+  let allEntries = JSON.parse(localStorage.getItem("weeklyPicks")) || [];
+  allEntries.push({
+    name: name,
+    picks: picksList,
+    tiebreaker: tiebreaker,
+    timestamp: new Date().toLocaleString()
+  });
 
-allEntries.push({
-  name: name,
-  picks: picksList,
-  tiebreaker: tiebreaker,
-  timestamp: new Date().toLocaleString()
-});
+  localStorage.setItem("weeklyPicks", JSON.stringify(allEntries));
 
-localStorage.setItem("weeklyPicks", JSON.stringify(allEntries));
-
-
-  // Show modal & blur content
+  // Show modal alert & blur main wrapper
   customAlert.style.display = "flex";
   contentWrapper.style.filter = "blur(10px)";
   form.reset();
+  
+  // Reset switch thumb visibility after form reset
+  document.querySelectorAll(".slide-switch").forEach(sw => {
+    const thumb = sw.querySelector(".switch-thumb");
+    if (thumb) thumb.style.opacity = "0";
+  });
 });
