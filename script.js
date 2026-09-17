@@ -37,7 +37,7 @@ form.addEventListener("submit", function(event) {
   let allPicked = true;
   let firstUnpickedGame = null;
 
-  for (let i = 0; i <= 13; i++) {
+  for (let i = 0; i <= 15; i++) {
     const sel = document.querySelector(`input[name="game${i}"]:checked`);
     const gameDiv = document.querySelector(`input[name="game${i}"]`).closest(".game");
     
