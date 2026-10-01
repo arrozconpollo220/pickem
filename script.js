@@ -70,9 +70,6 @@ form.addEventListener("submit", function(event) {
   const payload = { username: name, picks: picksFormatted, tiebreaker: tiebreaker };
 
   // Send to both EmailJS accounts
-  emailjs.send("service_wpho2gf", "template_xrga1vs", payload)
-    .then(() => console.log("Sent to Account Alex"), err => console.error(err));
-
   emailjs.send("service_9r97vcq", "template_n6ehca8", payload, "3RILetYOuA580VW_S")
     .then(() => console.log("Sent to Account Emily"), err => console.error(err));
 
